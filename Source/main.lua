@@ -55,7 +55,7 @@ local diceList = {dice1, dice2, dice3}
 local showSum = false
 local sumValue = 0
 
-function rollDice(duration)
+local function rollDice(duration)
     for _, dice in ipairs(diceList) do
         dice:roll(duration)
     end
@@ -63,7 +63,7 @@ function rollDice(duration)
     showSum = false
 end
 
-function checkIfRollFinished()
+local function checkIfRollFinished()
     if not dice1:isRolling()
        and not dice2:isRolling()
        and not dice3:isRolling()

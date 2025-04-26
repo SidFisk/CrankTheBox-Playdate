@@ -4,6 +4,7 @@ import "CoreLibs/graphics"
 
 local gfx = playdate.graphics
 
+Tile = {}
 class("Tile").extends()
 
 function Tile:init(value)

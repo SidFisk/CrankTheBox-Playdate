@@ -5,6 +5,7 @@ import "CoreLibs/graphics"
 
 local gfx = playdate.graphics
 
+Board = {}
 class("Board").extends()
 
 function Board:init()

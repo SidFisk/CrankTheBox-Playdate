@@ -2,6 +2,7 @@ local gfx = playdate.graphics
 local snd = playdate.sound
 local pd = playdate
 
+Dice = {}
 class('Dice').extends()
 
 function Dice:init(x, y)
