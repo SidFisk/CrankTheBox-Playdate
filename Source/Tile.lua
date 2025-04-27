@@ -11,16 +11,15 @@ local gfx <const> = playdate.graphics
 local snd <const> = playdate.sound
 local pd <const> = playdate
 
-local Tile = {}
-Tile.__index = Tile
+Tile = {}
+class("Tile").extends()
 
--- Constructor for the Tile class
-function Tile.new(value, graphic, xloc, yloc, vis, sel)
-    local self = setmetatable({}, Tile)
+function Tile:init(value, graphic, graphicSelected, xloc, yloc, vis, sel)
     self.value = value or 1 -- Default value is 1 if not provided
     self.selected = sel    -- Default selected state is false
     self.visible = vis      -- Default visible state is true
     self.graphic = gfx.image.new(graphic)   -- Sprite Graphic
+    self.graphicSelected = gfx.image.new(graphicSelected)
     self.xlocation = xloc
     self.ylocation = yloc
     self.sprite = gfx.sprite.new(self.graphic)
@@ -50,6 +49,13 @@ end
 -- Setter for selected state
 function Tile:setSelected(state)
     self.selected = state
+    if state then
+        gfx.sprite.removeSprite(self.sprite)
+        self.sprite = gfx.sprite.new(self.graphicSelected)
+    else
+        gfx.sprite.removeSprite(self.sprite)
+        self.sprite = gfx.sprite.new(self.graphic)
+    end
 end
 
 -- Getter for visible state
@@ -61,9 +67,13 @@ end
 function Tile:setVisible(state)
     self.visible = state
     if state then
-        self.sprite:add()
+        if self.sprite ~= nil then
+            self.sprite:add()
+        end
     else
-        self.sprite:remove()
+        if self.sprite ~= nil then
+            self.sprite:remove()
+        end
     end
 end
 
@@ -75,6 +85,16 @@ end
 -- Setter for graphic
 function Tile:setGraphic(graphic)
     self.graphic = graphic
+end
+
+-- Getter for graphicSelected
+function Tile:getGraphicSelected()
+    return self.graphicSelected
+end
+
+-- Setter for graphicSelected
+function Tile:setGraphicSelected(graphicSelected)
+    self.graphicSelected = graphicSelected
 end
 
 -- Setter for Location
