@@ -65,16 +65,15 @@ end
 
 -- Setter for visible state
 function Tile:setVisible(state)
-    self.visible = state
     if state then
+        gfx.sprite.removeSprite(self.sprite)
         if self.sprite ~= nil then
             self.sprite:add()
         end
     else
-        if self.sprite ~= nil then
-            self.sprite:remove()
-        end
+        gfx.sprite.removeSprite(self.sprite)
     end
+    self.visible = state
 end
 
 -- Getter for graphic
