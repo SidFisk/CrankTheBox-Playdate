@@ -4,5 +4,5 @@ description=Foo
 bundleID=com.goolawn.CrankTheBox
 version=0.2
 imagePath=images/card.png
-pdxversion=20601
-buildtime=796186578
+pdxversion=20703
+buildtime=804974582

@@ -815,7 +815,7 @@ function pd.update()
 		wait()
 	end
 	gfx.sprite.update()
-	debug()
+--	debug()
 end
 
 
